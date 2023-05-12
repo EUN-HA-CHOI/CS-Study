@@ -1,0 +1,164 @@
+명령어를 통해서 Git을 다루는 방법 
+
+
+
+bash: sudo: command not found 오류 해결 방법
+choco 설치
+
+깃 배쉬 sudo 설치 해야됨.
+
+
+
+작업을 시작할 때 
+clone 
+init : 현재 작업하는 것을 git에게 알려주겠다. 
+
+
+
+깃의 저장소를 초기화했다. 
+
+
+
+.git 이라는 디렉토리는 이제 우리가 버전 관리를 하게 되면 여러 가지 정보들이 생성되는데 생성된 정보는 저 디렉토리에 저장된다. 
+
+
+
+프로젝트를 버전관리 하겠다라고 git 에게 알려준다. 여러 개의 파일을 관리한다고 상상해보며. 
+
+$ vim f1.txt 를 입력하면 다음과 같은 화면이 나온다. 입력 모드가 아니기 때문에 아무것도 입력되지 않는다. 알파벳 i 를 누르면, 하단에 'INSERT' 라고 하는 것이 뜬다. 
+
+
+
+
+무언가를 입력 할 상태가 되었다.
+
+
+
+git status : 깃 현재 상태 (상태 명령)
+git add : 깃 관리 
+
+
+
+
+
+내가 작성한 것이라는 것을 알려주기 위해 이름,이메일 입력.
+
+
+git commit 
+
+
+# 은 나에게 지금 status 정보를 알려주는 것.
+
+현재 버전의 메세지를 적는다. 이 파일이 왜 변경 되었는지 적는게 commit 메세지 라고 한다. 
+
+INSERT 를 지우기 위해 i 를 누른다음 버전 1 이라는 것을 알려주기 위해 숫자 1을 입력 하고 esc 를 누른 다음  콜론(;) 입력 후 : wq 를 입력 하면 다시 bash 창으로 돌아간다. 
+
+
+
+버전이 잘 만들었는지 확인 하기 위해 git log 입력 
+숫자 1인 버전 메세지를 확인 할 수 있고, 이 버전을 만든 사람은 eunhachoi 이고, 언제 버전을 만들었는지 담겨있는 정보가 있다. 
+
+
+
+modified : f1.txt  이 나오면 git add 를 해서 버전 관리를 한다.  버전 생성 , 수정 후에도 add 를 한다. 
+
+ 
+
+
+
+(인프런 9강)
+
+git stage area 
+
+
+
+새로운 파일의 버전 생성 후 
+
+
+
+git log 로 히스토리(?) 확인.
+ 
+
+파일 수정 하기
+
+왜 git 이 add 라는 과정을 밟아야 하는가? 
+-> commit 을 하는 걸 까먹을 수 있기 때문에 (시기를 놓쳤을 때) 원하는 파일만 commit 할 수 있다. 
+
+
+
+git add 하면(올려질 대기?) git commit 으로 그 파일들만 버전에 포함 시킨다. 
+
+commit 대기 상태 => stage area 이라고 한다. 
+
+stage:  commit 될 파일이 가는 곳
+repository : commit 된 파일이 저장된 곳 
+
+
+
+변경 사항 확인하기 (log & diff)
+
+
+
+git log -p 입력하면 commit 과 commit 사이의 소스 상의 차이를 확인 할 수 있다.  
+
+아래와 같이 git diff 뒤에 비교하려는 두 파일의 commit 를 입력하면 두 파일의 차이를 보여준다. 
+git diff 4f700b0c67d18f89c0576dafb2f14e3e431cc476..4b4f6127fd296b9d285725746a11b4f7e7045c63
+
+
+
+
+
+과거로 돌아가기 (reset)
+
+
+
+
+
+git clone vs code 연동 
+
+
+
+
+
+다음은 git bash에서 git clone 명령어를 통해 복제하는 데, git bash CLI가 작업하는 위치에 복사되기 때문에 저장할 장소 정한 뒤 clone을 하도록 하자.   
+
+저장할 폴더 위치에서 마우스 우클릭을 하여 Git Bash Here을 클릭하면 해당 위치에서 쉽게 Clone을 할 수 있다.
+
+저장할 위치를 정했다면 git bash에서 다음 명령어를 통해 clone을 하도록 한다.
+
+깃허브에서 리포지토리 주소를 복사했다면, 명령어 창에 마우스 우클릭하여 Paste 버튼을 통해 복사한 주소를 붙여 넣기 할 수 있다.
+
+$ git clone <https://github.com/계정/리포지토리.git>
+
+새 폴더 만들고 git 클론 연결 
+
+git 새 폴더 올리기
+git clone url
+git remote -v (연결 끊어줄 때)
+git remote add origin url
+ git remote -v
+git fetch --all
+원하는 폴더 만들고
+ls 로 확인
+cd 폴더명 (폴더로 들어가기)
+git add .
+ git commit -m "init"
+ git push origin main
+git status
+
+
+
+폴더 수정 후 업로드
+
+git status
+git commit -m "init"
+git push origin main
+git status
+
+
+
+협업 시 내 파일 수정 업로드
+
+git pull origin main 
+
+git push origin main
